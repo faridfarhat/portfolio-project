@@ -80,15 +80,11 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 #Note name modified
+import dj_database_url
+
+DATABASE_URL = "postgresql://postgres:IdfTpaRzOHozYHQLJjhxiQyRDpCzMJdP@junction.proxy.rlwy.net:22467/railway"
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'portfoliodb',
-        'USER': 'postgres',
-        'PASSWORD': 'Stand@2020@',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
 }
 
 
