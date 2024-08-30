@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-%fi$i^7h4zpbg%u+88zxc4-0c9k@zea8wgt9&+p-_8-*%cj-$r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*"] #Note added all host
 
 
 # Application definition
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', #add whitenoise
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 #Note name modified
 import dj_database_url
 
-DATABASE_URL = "postgresql://postgres:IdfTpaRzOHozYHQLJjhxiQyRDpCzMJdP@junction.proxy.rlwy.net:22467/railway"
+DATABASE_URL = "postgresql://postgres:YCkeQAFMAcPllbSpsrpQRyBDQofJnENl@junction.proxy.rlwy.net:55726/railway"
 DATABASES = {
     'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
 }
@@ -125,6 +125,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+#note added below
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'portfolio/static/')]
