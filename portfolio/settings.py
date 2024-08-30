@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-%fi$i^7h4zpbg%u+88zxc4-0c9k@zea8wgt9&+p-_8-*%cj-$r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"] #Note added all host
 
@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 #Note name modified
 import dj_database_url
 
-DATABASE_URL = "postgresql://postgres:YCkeQAFMAcPllbSpsrpQRyBDQofJnENl@junction.proxy.rlwy.net:55726/railway"
+DATABASE_URL = "postgresql://postgres:AQLsdZqtFVsczyhFVKZltxTNHAIrvmnO@autorack.proxy.rlwy.net:20779/railway"
 DATABASES = {
     'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
 }
