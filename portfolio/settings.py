@@ -90,7 +90,7 @@ DATABASES = {
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'portfolio-project-production-09c8.up.railway.app'
+    'portfolio-project'
 ]
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
