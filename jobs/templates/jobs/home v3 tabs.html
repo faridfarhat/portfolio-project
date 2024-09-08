@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farid Farhat Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{% static 'hero-background.jpg' %}') no-repeat center center;
+            background-size: cover;
+            text-align: center;
+        }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+        .section {
+            padding: 40px 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-img-top {
+            height: 180px;
+            object-fit: cover;
+        }
+        .skills-box {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .skills-icon {
+            font-size: 2.5rem;
+            color: #007bff;
+        }
+        .modal-content {
+            border-radius: 10px;
+        }
+        .header {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+        .nav-link {
+            color: #ffffff !important;
+        }
+        .nav-link:hover {
+            color: #007bff !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Farid Farhat</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#skills">Skills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#jobs">Jobs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="mailto:faridfarhat2050@gmail.com">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div>
+            <h1 class="hero-title">Farid Farhat</h1>
+            <p class="hero-subtitle">Web Developer | Innovator</p>
+            <a href="#about" class="btn btn-light btn-lg">Learn More</a>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center">
+                    <img src="{% static 'Photo.jpeg' %}" class="img-fluid rounded-circle border border-dark" alt="Farid Farhat" width="150">
+                </div>
+                <div class="col-md-8">
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-body">
+                            <h2 class="card-title">About Me</h2>
+                            <p class="card-text">Hi, I'm Farid Farhat, a passionate web developer specializing in creating sleek, functional websites using Django and Bootstrap. I have a keen interest in sustainable solutions and innovation. Feel free to reach out to me via email or LinkedIn.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container text-center">
+            <h2 class="mb-4">My Skills</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-4 mb-4">
+                    <div class="skills-box">
+                        <i class="bi bi-code-slash skills-icon mb-2"></i>
+                        <h4>Front-End Development</h4>
+                        <p>HTML, CSS, JavaScript, React</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="skills-box">
+                        <i class="bi bi-server skills-icon mb-2"></i>
+                        <h4>Backend Development</h4>
+                        <p>Python, Django, REST APIs, SQL/NoSQL</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="skills-box">
+                        <i class="bi bi-palette skills-icon mb-2"></i>
+                        <h4>UI/UX Design</h4>
+                        <p>Design Principles, Prototyping</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Listings Section -->
+    <section id="jobs" class="section">
+        <div class="container">
+            <h2 class="text-center mb-4">Job Listings</h2>
+            <div class="row">
+                {% for job in jobs.all %}
+                <div class="col-md-4 mb-4">
+                    <!-- Job Card -->
+                    <div class="card border-0 shadow-sm">
+                        <img class="card-img-top" src="{{ job.image.url }}" alt="Job image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ job.title }}</h5>
+                            <p class="card-text">{{ job.summary }}</p>
+                            <!-- Button to trigger modal -->
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#jobModal{{ job.id }}">
+                                More Info
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Modal for Job Details -->
+                    <div class="modal fade" id="jobModal{{ job.id }}" tabindex="-1" aria-labelledby="jobModalLabel{{ job.id }}" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="jobModalLabel{{ job.id }}">{{ job.title }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>{{ job.description }}</p> <!-- Ensure you have this field in your model -->
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+{% endblock %}

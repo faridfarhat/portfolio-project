@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Header Section -->
+<header class="container-fluid bg-primary text-white text-center py-4">
+  <h1>Farid Farhat</h1>
+  <p>Web Developer | Innovator</p>
+</header>
+
+<!-- About Me and Skills Section -->
+<section class="container py-5">
+  <div class="row align-items-center">
+    <!-- About Me -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-lg border-0">
+        <div class="card-body">
+          <h2 class="card-title">About Me</h2>
+          <p class="card-text">Hi, I'm Farid Farhat, a passionate web developer specializing in creating sleek, functional websites using Django and Bootstrap. I have a keen interest in sustainable solutions and innovation. Feel free to reach out to me via email or LinkedIn.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="col-md-6 mb-4">
+      <h2 class="text-center mb-4">Skills</h2>
+      <div class="row text-center">
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm border-0 p-3">
+            <i class="bi bi-code-slash display-4 text-primary"></i>
+            <h5 class="mt-2">Front-End</h5>
+            <p class="small">HTML, CSS, JavaScript, React</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm border-0 p-3">
+            <i class="bi bi-server display-4 text-success"></i>
+            <h5 class="mt-2">Back-End</h5>
+            <p class="small">Python, Django, REST APIs, SQL/NoSQL</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm border-0 p-3">
+            <i class="bi bi-palette display-4 text-info"></i>
+            <h5 class="mt-2">UI/UX Design</h5>
+            <p class="small">Design Principles, Prototyping</p>
+          </div>
+        </div>
+        <!-- Additional Skills -->
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm border-0 p-3">
+            <i class="bi bi-cloud display-4 text-warning"></i>
+            <h5 class="mt-2">Cloud Services</h5>
+            <p class="small">AWS, Azure, Google Cloud</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm border-0 p-3">
+            <i class="bi bi-lock display-4 text-danger"></i>
+            <h5 class="mt-2">Security</h5>
+            <p class="small">Cybersecurity, Encryption</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm border-0 p-3">
+            <i class="bi bi-gear display-4 text-secondary"></i>
+            <h5 class="mt-2">DevOps</h5>
+            <p class="small">CI/CD, Docker, Kubernetes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Job Listings Section -->
+<section class="container py-5">
+  <h2 class="text-center mb-4">Job Listings</h2>
+  <div class="row">
+    {% for job in jobs.all %}
+    <div class="col-md-4 mb-4">
+      <!-- Job Card -->
+      <div class="card border-0 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{ job.title }}</h5>
+          <p class="card-text">{{ job.summary }}</p>
+          <!-- Button to trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#jobModal{{ job.id }}">
+            More Info
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal for Job Details -->
+      <div class="modal fade" id="jobModal{{ job.id }}" tabindex="-1" aria-labelledby="jobModalLabel{{ job.id }}" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="jobModalLabel{{ job.id }}">{{ job.title }} - More Info</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p><strong>Description:</strong> {{ job.description }}</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}

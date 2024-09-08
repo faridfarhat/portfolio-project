@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-%fi$i^7h4zpbg%u+88zxc4-0c9k@zea8wgt9&+p-_8-*%cj-$r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True #Note if debug is false media files will not be read
 
 ALLOWED_HOSTS = ["*"] #Note added all host
 
@@ -35,6 +35,8 @@ ALLOWED_HOSTS = ["*"] #Note added all host
 # Application definition
 
 INSTALLED_APPS = [
+    'software.apps.SoftwareConfig',
+    'publications.apps.PublicationsConfig',
     'blog.apps.BlogConfig',
     'jobs.apps.JobsConfig', #Note new model added here
     'django.contrib.admin',
@@ -61,7 +63,7 @@ ROOT_URLCONF = 'portfolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['portfolio/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

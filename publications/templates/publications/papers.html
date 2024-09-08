@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section id="publications" class="container py-5">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="display-5 mb-4">Academic Publications</h2>
+        <p class="lead mb-5">A collection of published research and scholarly contributions.</p>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <ul class="list-group list-group-flush" style="font-size: 1.1rem; line-height: 1.8;">
+
+  
+          <li class="list-group-item bg-light mb-3 shadow-sm">
+            <strong>Farhat, F.</strong>, Kashifi, M. T., Jamal, A., & Others. (2022). Spatiotemporal projections of precipitation and temperature over Afghanistan based on CMIP6 global climate models. 
+            <em>Modeling Earth Systems and Environment</em>.
+            <a href="https://rdcu.be/cHtYE" target="_blank" class="text-primary fw-bold" style="text-decoration: underline;">Available here</a>
+          </li>
+  
+          <li class="list-group-item bg-light mb-3 shadow-sm">
+            <strong>Farhat, F.</strong>, Janaka, B., Bamunuwala, R. M. J., & Wijayaratna, T. M. N. (2022). Streamflow variability under climate change scenarios in Kelani river basin, Sri Lanka (Master’s thesis, University of Moratuwa).
+            <a href="https://opac.lib.uom.lk/cgi-bin/koha/opac-detail.pl?biblionumber=181649" target="_blank" class="text-primary fw-bold" style="text-decoration: underline;">Available here</a>
+          </li>
+
+          <li class="list-group-item bg-light mb-3 shadow-sm">
+            <strong>Farhat, F.</strong> (2022). Real-time drought monitoring from Climate Hazards Group Infrared Precipitation with Stations (CHIRPS). 
+            <em>Space4Water Portal</em>, United Nations Office for Outer Space Affairs.
+            <a href="https://www.space4water.org/s4w/web/news/real-time-drought-monitoring-climate-hazards-group-infrared-precipitation-stations-chirps-0" target="_blank" class="text-primary fw-bold" style="text-decoration: underline;">Available here</a>
+          </li>
+
+
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    /* Publications Section Styling */
+    #publications {
+      background: linear-gradient(to right, #f8f9fa, #e9ecef);
+      padding: 60px 0;
+      font-family: 'Lora', serif;
+    }
+  
+    #publications h2 {
+      color: #2c3e50;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+  
+    #publications p.lead {
+      color: #7f8c8d;
+      font-weight: 400;
+    }
+  
+    /* List Styling */
+    #publications ul li {
+      background: #f1f3f5;
+      padding: 20px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+  
+    #publications ul li:hover {
+      background: #dfe6e9;
+      transform: translateY(-5px);
+    }
+  
+    /* Hyperlink Styling */
+    #publications a.text-primary {
+      color: #2980b9;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+  
+    #publications a.text-primary:hover {
+      color: #1abc9c;
+      text-decoration: none;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      #publications h2 {
+        font-size: 1.8rem;
+      }
+  
+      #publications ul li {
+        font-size: 1rem;
+      }
+    }
+  </style>
+  
+  {% endblock %}

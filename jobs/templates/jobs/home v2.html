@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farid Farhat Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+        /* Dynamic Background */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #5a2d81, #9c27b0, #f4b400);
+            background-size: 300% 300%;
+            animation: gradientAnimation 10s ease infinite;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            padding: 50px 0; /* Adjusted padding */
+        }
+        .hero img {
+            width: 70px; /* Adjusted size */
+            height: 70px; /* Adjusted size */
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff; /* Bootstrap Blue */
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker Blue */
+            border-color: #0056b3;
+        }
+
+        /* About Section */
+        #about {
+            background-color: #ffffff; /* White background for a clean look */
+            padding: 60px 0;
+        }
+        #about img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 8px;
+        }
+        #about h2 {
+            color: #333; /* Dark Grey for headings */
+        }
+        #about ul {
+            color: #555; /* Medium Grey for list items */
+        }
+        #about ul i {
+            color: #007bff; /* Bootstrap Blue for icons */
+        }
+
+        /* Jobs Section */
+        #jobs {
+            background-color: #f8f9fa; /* Light Grey background */
+            color: #333; /* Dark Grey text */
+            padding: 60px 0;
+        }
+        .accordion-button {
+            background-color: #e9ecef; /* Very Light Grey */
+            color: #333;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: #ced4da; /* Slightly Darker Grey */
+        }
+        .btn-info {
+            background-color: #007bff; /* Bootstrap Blue */
+            border-color: #007bff;
+        }
+        .btn-info:hover {
+            background-color: #0056b3; /* Darker Blue */
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Dynamic Background -->
+    <div class="background"></div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero text-center d-flex align-items-center">
+        <div class="container d-flex align-items-center">
+            <img src="{% static 'profile-photo.jpg' %}" class="img-fluid rounded-circle" alt="Profile Photo">
+            <div>
+                <h1 class="display-4 fw-bold">Welcome to My Website</h1>
+                <p class="lead">I am Farid Farhat, a passionate developer dedicated to creating innovative solutions.</p>
+                <a href="#about" class="btn btn-primary btn-lg">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2 class="fw-bold">About Me</h2>
+                    <p>I am a skilled developer with a passion for creating user-centric solutions. My journey in the tech world has been both challenging and rewarding.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="{% static 'about-image.jpg' %}" class="img-fluid rounded" alt="About Me">
+                </div>
+                <div class="col-md-4">
+                    <h3>Skills</h3>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-code"></i> Web Development</li>
+                        <li><i class="fas fa-database"></i> Database Management</li>
+                        <li><i class="fas fa-cogs"></i> Problem Solving</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jobs Section -->
+    <section id="jobs">
+        <div class="container">
+            <div class="row">
+                <div class="accordion" id="jobAccordion">
+                    {% for job in jobs.all %}
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header" id="heading{{ job.id }}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseJob{{ job.id }}" aria-expanded="false" aria-controls="collapseJob{{ job.id }}">
+                                {{ job.title }}
+                            </button>
+                        </h2>
+                        <div id="collapseJob{{ job.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ job.id }}" data-bs-parent="#jobAccordion">
+                            <div class="accordion-body">
+                                <p><strong>Summary:</strong> {{ job.summary }}</p>
+                                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#jobModal{{ job.id }}">
+                                    More Info
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal for detailed description -->
+                    <div class="modal fade" id="jobModal{{ job.id }}" tabindex="-1" aria-labelledby="jobModalLabel{{ job.id }}" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="jobModalLabel{{ job.id }}">{{ job.title }} - More Info</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p><strong>Description:</strong> {{ job.description }}</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+{% endblock %}
